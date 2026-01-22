@@ -1,0 +1,2 @@
+class ATError(Exception):
+    pass
