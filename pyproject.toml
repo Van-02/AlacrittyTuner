@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alacritty-tuner"
+version = "0.1.0"
+description = "A professional CLI to manage Alacritty configuration"
+dependencies = ["tomlkit"]
+
+[tool.setuptools]
+packages = ["alacritty_tuner"]
+
+[tool.setuptools.package-data]
+"*" = ["themes/*.toml"]
+
+[project.scripts]
+atuner = "alacritty_tuner.main:main"

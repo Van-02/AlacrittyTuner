@@ -8,16 +8,27 @@ def get_alacritty_config_path():  # -> Path
     return path
 
 
+def get_themes_path() -> Path:
+    """
+    Returns the path to the user's themes folder.
+    """
+    path = Path.home() / ".config" / "alacritty" / "themes"
+
+    if not path.exists():
+        path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
 def change_theme(name_theme):
     config_path = get_alacritty_config_path()
 
-    if not config_path:
+    if not config_path.exists():
         raise ATError("alacritty.toml not found")
 
     with open(config_path, "r") as f:
         config = parse(f.read())
 
-    theme_path = Path(__file__).parent.parent / "themes" / f"{name_theme}.toml"
+    theme_path = get_themes_path() / f"{name_theme}.toml"
 
     if not theme_path.exists():
         raise ATError(f"The theme '{name_theme}' not found in {theme_path}")
@@ -34,7 +45,7 @@ def change_theme(name_theme):
 
 
 def get_available_themes():
-    theme_path = Path(__file__).parent.parent / "themes"
+    theme_path = get_themes_path()
     return [f.stem for f in theme_path.glob("*.toml")]
 
 

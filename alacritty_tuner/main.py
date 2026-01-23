@@ -1,14 +1,14 @@
-from alacritty_tuner.cli import cli
-from alacritty_tuner.config_manager import (
-    change_opacity,
-    change_theme,
-    get_available_themes,
-)
-from alacritty_tuner.exceptions import ATError
+import sys
+from .cli import cli
+from .config_manager import change_opacity, change_theme, get_available_themes
+from .exceptions import ATError
 
 
 def main():
     try:
+        if len(sys.argv) == 1:
+            raise ATError("Use -h or --help for information.")
+
         args = cli()
 
         if args.list:
@@ -21,11 +21,8 @@ def main():
         if args.theme:
             change_theme(args.theme)
 
-        if args.opacity:
+        if args.opacity is not None:
             change_opacity(args.opacity)
-
-        else:
-            raise ATError("Use -h or --help for information.")
 
     except ATError as e:
         print(e)
