@@ -1,7 +1,8 @@
 # AlacrittyTuner
 
 **Idioma**
-E🇪🇸 Español
+
+🇪🇸 Español
 [🇺🇸 Ingles](./README.md)
 
 AlacrittyTuner es una herramienta de CLI de grado profesional diseñada para gestionar y recargar instantáneamente la configuración de tu terminal Alacritty. Cambiá temas, fuentes y propiedades de la ventana al instante.

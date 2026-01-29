@@ -1,4 +1,4 @@
-# AlacrittyTuner 🚀
+# AlacrittyTuner 
 
 **Language**
 
